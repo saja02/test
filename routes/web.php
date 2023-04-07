@@ -16,3 +16,52 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/about', function () {
+    $name = request('name');
+    return view('about', compact('name'));
+});
+
+Route::post('/store', function () {
+    $name = request('name');
+    return view('about', compact('name'));
+});
+//عرض مصفوفة احادية
+Route::get('tasks', function () {
+    $tasks = [
+        'Task 1',
+        'Task 2',
+        'Task 3'
+    ];
+    return view('tasks', compact('tasks'));
+});
+
+Route::get('show/{id}', function ($id) {
+    $tasks = [
+        'Task 1',
+        'Task 2',
+        'Task 3'
+    ];
+    $task = $tasks[$id];
+    return view('show', compact('task'));
+});
+
+//عرض مصفوفة ثنائية
+Route::get('tasks', function () {
+    $tasks = [
+        'First task' => 'Task 1',
+        'Second task' => 'Task 2',
+        'Third task' => 'Task 3'
+    ];
+    return view('tasks', compact('tasks'));
+});
+
+Route::get('show/{id}', function ($id) {
+    $tasks = [
+        'First task' => 'Task 1',
+        'Second task' => 'Task 2',
+        'Third task' => 'Task 3'
+    ];
+    $task = $tasks[$id];
+    return view('show', compact('task'));
+});
